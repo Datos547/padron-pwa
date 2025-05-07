@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Consulta de Padrón Offline</title>
 
   <!-- PWA Manifest -->
@@ -99,6 +99,8 @@
         .register('sw.js')
         .then(r => console.log('✅ SW registrado en:', r.scope))
         .catch(e => console.error('❌ SW error:', e));
+    } else {
+      console.warn('⚠️ Service Worker no soportado');
     }
   </script>
 
@@ -106,10 +108,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-ca PWA -->
-Corrige rutas de recursos sin ?file=
-
-  <script src="app.js"></script>
-</body>
-</html>
-Elimina ?file= de index.html
