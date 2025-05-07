@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Padrón</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="?file=manifest.json">
+
+  <style>
+    :root {
+      --blue:  #004996;
+      --green: #32bdc0;
+      --bg:    #f0f8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .search {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .search input {
+      flex: 1 1 200px;
+      padding: .5rem;
+      border: 2px solid var(--blue);
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .search button {
+      padding: .5rem 1rem;
+      background: var(--green);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .search button:hover { opacity: .9; }
+    #results {
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    #results table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    #results th, #results td {
+      border: 1px solid #ddd;
+      padding: .5rem;
+      font-size: .9rem;
+      text-align: left;
+    }
+    #results th { background: var(--blue); color: #fff; }
+    @media (max-width:700px) {
+      .search { flex-direction: column; }
+      .search button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Consulta de Padrón</h1>
+    <div class="search">
+      <input id="dniInput"  type="text" placeholder="Buscar por DNI">
+      <button id="btnDNI">Buscar DNI</button>
+      <input id="nameInput" type="text" placeholder="Buscar por Nombre">
+      <button id="btnName">Buscar Nombre</button>
+    </div>
+    <div id="results"><p>Esperando búsqueda…</p></div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register(location.pathname + '?file=sw.js')
+        .then(r => console.log('✅ SW registrado en:', r.scope))
+        .catch(e => console.error('❌ SW error:', e));
+    }
+  </script>
+
+  <script src="?file=app.js"></script>
+</body>
+</html>
