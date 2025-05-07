@@ -65,3 +65,4 @@ document.getElementById('btnName').onclick = async () => {
        <tbody>${f.map(r=>`<tr>${Object.values(r).map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`
     : '<p>No encontrado.</p>';
 };
+“Arregla DATA_URL y elimina duplicados”
