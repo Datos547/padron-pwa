@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta de Padrón</title>
+  <title>Consulta de Padrón Offline</title>
 
   <!-- PWA Manifest -->
-  <link rel="manifest" href="?file=manifest.json">
+  <link rel="manifest" href="manifest.json">
 
   <style>
     :root {
@@ -83,7 +82,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Consulta de Padrón</h1>
+    <h1>Consulta de Padrón Offline</h1>
     <div class="search">
       <input id="dniInput"  type="text" placeholder="Buscar por DNI">
       <button id="btnDNI">Buscar DNI</button>
@@ -93,15 +92,17 @@
     <div id="results"><p>Esperando búsqueda…</p></div>
   </div>
 
+  <!-- Registrar Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
-        .register(location.pathname + '?file=sw.js')
+        .register('sw.js')
         .then(r => console.log('✅ SW registrado en:', r.scope))
         .catch(e => console.error('❌ SW error:', e));
     }
   </script>
 
-  <script src="?file=app.js"></script>
+  <!-- Lógica PWA -->
+  <script src="app.js"></script>
 </body>
 </html>
